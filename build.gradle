@@ -1,0 +1,88 @@
+// JLayer build.gradle
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'application'
+
+mainClassName = "JLayer"
+sourceCompatibility = 1.5
+version = '1.0.1'
+
+defaultTasks 'clean','build', 'run'  //'installApp','makejar','distZip','run'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        //classpath 'javazoom.jl.decoder'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    groovy 'org.codehaus.groovy:groovy-all:2.2.0'
+    compile 'org.apache.ivy:ivy:2.3.0'
+    testCompile fileTree(dir: 'lib',  includes: ['*.jar']) 
+    testRuntime fileTree(dir: 'lib',  includes: ['*.jar']) 
+    testCompile 'junit:junit:4.11'
+    //testCompile 'javazoom.jl.decoder.*'
+    //testRuntime 'javazoom.jl.decoder.*'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.+'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.+'
+}
+ 
+sourceSets {
+  main {
+    resources {
+      srcDir "resources"
+    }
+
+    groovy {
+      exclude 'some/unwanted/package/**'
+    } // end of groovy
+
+    java {
+      exclude 'some/unwanted/package/**'
+    } // end of groovy
+  } // end of main
+
+  test {
+    resources {
+      srcDir "resources"
+    }
+  } // end of test
+} // end of sourceSets
+
+
+archivesBaseName='JLayer'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'JLayer', 'Implementation-Version': version, 'Main-Class': 'JLayer'
+    }
+}
+
+task(runMP3, dependsOn: 'classes', type: JavaExec) {
+	main = 'javazoom.jl.player.MP3'
+	classpath = sourceSets.main.runtimeClasspath
+	args 'resources/Love.mp3'
+	systemProperty 'simple.message', 'Hello '
+}
+
+
+
+task makejar(type: Jar) {
+    from files(sourceSets.main.output.classesDir)
+    from configurations.runtime.asFileTree.files.collect { zipTree(it) }
+    archivesBaseName='JLayer'
+    manifest {
+        attributes 'Main-Class': 'JLayer', archivesBaseName:'JLayer'
+    }
+}
+
+// ================================
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.9'
+}
