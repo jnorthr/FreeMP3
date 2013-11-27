@@ -54,13 +54,14 @@ public class jlpTest extends TestCase
 	}
 	/*
 	 * @see TestCase#setUp()
+	 * /Volumes/FHD-XS/JLayer1.0.1/resources/mp3.properties
 	 */
 	protected void setUp() throws Exception
 	{
 		super.setUp();
 		log.info("jlpTest setUp()")
 		 // Read in 'mail.groovy'.
-        	final ConfigObject config = new ConfigSlurper().parse(new File("/Volumes/FHD-XS/JLayer1.0.1/resources/mp3.properties").toURI().toURL());
+        	final ConfigObject config = new ConfigSlurper().parse(new File("resources/mp3.properties").toURI().toURL());
 
 /*
 		props = new Properties();

@@ -1,20 +1,19 @@
 // JLayer build.gradle
+// See : http://www.javazoom.net/index.shtml
+
 apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'application'
 
-mainClassName = "JLayer"
+mainClassName = "javazoom.jl.player.MP3"
 sourceCompatibility = 1.5
-version = '1.0.1'
-
-defaultTasks 'clean','build', 'run'  //'installApp','makejar','distZip','run'
+version = '1.0.2'
+description = 'JLayer Open Source MP3 Player for Java/Groovy'
+defaultTasks 'clean','build', 'javadoc', 'installApp', 'makejar', 'distZip', 'distTar', 'runMP3'
 
 buildscript {
     repositories {
         mavenCentral()
-    }
-    dependencies {
-        //classpath 'javazoom.jl.decoder'
     }
 }
 
@@ -28,10 +27,8 @@ dependencies {
     testCompile fileTree(dir: 'lib',  includes: ['*.jar']) 
     testRuntime fileTree(dir: 'lib',  includes: ['*.jar']) 
     testCompile 'junit:junit:4.11'
-    //testCompile 'javazoom.jl.decoder.*'
-    //testRuntime 'javazoom.jl.decoder.*'
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.+'
-    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.+'
+    //compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.+'
+    //compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.+'
 }
  
 sourceSets {
@@ -46,7 +43,7 @@ sourceSets {
 
     java {
       exclude 'some/unwanted/package/**'
-    } // end of groovy
+    } // end of java
   } // end of main
 
   test {
@@ -57,8 +54,8 @@ sourceSets {
 } // end of sourceSets
 
 
-archivesBaseName='JLayer'
 jar {
+    archivesBaseName='JLayer'
     manifest {
         attributes 'Implementation-Title': 'JLayer', 'Implementation-Version': version, 'Main-Class': 'JLayer'
     }
@@ -70,7 +67,6 @@ task(runMP3, dependsOn: 'classes', type: JavaExec) {
 	args 'resources/Love.mp3'
 	systemProperty 'simple.message', 'Hello '
 }
-
 
 
 task makejar(type: Jar) {
