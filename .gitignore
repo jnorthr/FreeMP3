@@ -1,0 +1,6 @@
+build/**
+classes/**
+.DS_Store
+src/main/.DS_Store
+src/main/java/.DS_Store
+src/main/java/javazoom/jl/.DS_Store
