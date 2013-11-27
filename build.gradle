@@ -8,7 +8,7 @@ apply plugin: 'application'
 mainClassName = "javazoom.jl.player.MP3"
 sourceCompatibility = 1.5
 version = '1.0.2'
-description = 'JLayer Open Source MP3 Player for Java/Groovy'
+description = 'FreeMP3 (JLayer Open Source) MP3 Player for Java/Groovy'
 defaultTasks 'clean','build', 'javadoc', 'installApp', 'makejar', 'distZip', 'distTar', 'runMP3'
 
 buildscript {
@@ -55,9 +55,9 @@ sourceSets {
 
 
 jar {
-    archivesBaseName='JLayer'
+    archivesBaseName='FreeMP3'
     manifest {
-        attributes 'Implementation-Title': 'JLayer', 'Implementation-Version': version, 'Main-Class': 'JLayer'
+        attributes 'Implementation-Title': 'JLayer', 'Implementation-Version': version, 'Main-Class': 'javazoom.jl.player.MP3'
     }
 }
 
@@ -72,7 +72,7 @@ task(runMP3, dependsOn: 'classes', type: JavaExec) {
 task makejar(type: Jar) {
     from files(sourceSets.main.output.classesDir)
     from configurations.runtime.asFileTree.files.collect { zipTree(it) }
-    archivesBaseName='JLayer'
+    archivesBaseName='FreeMP3'
     manifest {
         attributes 'Main-Class': 'JLayer', archivesBaseName:'JLayer'
     }
