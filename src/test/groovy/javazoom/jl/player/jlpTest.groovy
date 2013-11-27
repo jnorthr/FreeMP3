@@ -60,18 +60,13 @@ public class jlpTest extends TestCase
 	{
 		super.setUp();
 		log.info("jlpTest setUp()")
-		 // Read in 'mail.groovy'.
-        	final ConfigObject config = new ConfigSlurper().parse(new File("resources/mp3.properties").toURI().toURL());
-
-/*
 		props = new Properties();
 		InputStream pin = getClass().getClassLoader().getResourceAsStream("mp3.properties");
 		props.load(pin);
-*/ 
-		String basefile = config.basefile;   // (String) props.getProperty("basefile");
-		String name = config.filename;  // (String) props.getProperty("filename");		
-		filename = basefile + name;	
-		//log.info("jlpTest setUp() found mp.properties and filename=${filename}";);
+ 
+		String basefile = (String) props.getProperty("basefile");
+		String name = (String) props.getProperty("filename");		
+		filename = basefile+name;	
 	}
 	/*
 	 * @see TestCase#tearDown()

@@ -27,6 +27,7 @@ import javazoom.jl.player.Player;
 public class MP3 {
     private String filename;
     private Player player; 
+    int playtime = 10; // default to 10 sec.s of play
 
     // constructor that takes the name of an MP3 file
     public MP3(String filename) {
@@ -40,7 +41,7 @@ public class MP3 {
         def fh = new File(filename); 
         if (fh.exists() )
         {
-		println "playing "+fn.canonicalFile.toString()
+		println "playing "+fh.canonicalFile.toString()
         }
         else
         {
@@ -67,15 +68,30 @@ public class MP3 {
         }.start();
 
 
-    }
+    } // end of play
 
-
-    // test client
+    // play client
     public static void main(String[] args) {
     
         String filename = (args.size() > 0) ? args[0] : "resources/Love.mp3";
         MP3 mp3 = new MP3(filename);
-        mp3.play();
+
+        String playtimes = (args.size() > 1) ? args[1] : "10";
+	try{ mp3.playtime = playtimes as int; } catch(Exception x){ mp3.playtime = 10; }
+
+	def th = Thread.start 
+	{
+		println 'starting to play '+filename
+	        mp3.play();
+    		sleep mp3.playtime * 1000;
+    		//throw new NullPointerException()
+	} // end of thread start
+
+	th.setDefaultUncaughtExceptionHandler({t,ex ->
+    		println 'ignoring: ' + ex.class.name
+	} as Thread.UncaughtExceptionHandler)
+
+	th.join()
 
         // when  done, stop playing it
         mp3.close();

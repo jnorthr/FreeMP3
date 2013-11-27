@@ -10,6 +10,9 @@ sourceCompatibility = 1.5
 version = '1.0.2'
 description = 'FreeMP3 (JLayer Open Source) MP3 Player for Java/Groovy'
 defaultTasks 'clean','build', 'javadoc', 'installApp', 'makejar', 'distZip', 'distTar', 'runMP3'
+ext{
+    archivesBaseName='FreeMP3'
+}
 
 buildscript {
     repositories {
@@ -22,13 +25,11 @@ repositories {
 }
 
 dependencies {
-    groovy 'org.codehaus.groovy:groovy-all:2.2.0'
+    compile 'org.codehaus.groovy:groovy-all:2.2.0'
     compile 'org.apache.ivy:ivy:2.3.0'
     testCompile fileTree(dir: 'lib',  includes: ['*.jar']) 
     testRuntime fileTree(dir: 'lib',  includes: ['*.jar']) 
     testCompile 'junit:junit:4.11'
-    //compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.+'
-    //compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.+'
 }
  
 sourceSets {
@@ -55,16 +56,15 @@ sourceSets {
 
 
 jar {
-    archivesBaseName='FreeMP3'
     manifest {
-        attributes 'Implementation-Title': 'JLayer', 'Implementation-Version': version, 'Main-Class': 'javazoom.jl.player.MP3'
+        attributes 'Implementation-Title': 'FreeMP3', 'Implementation-Version': version, 'Main-Class': 'javazoom.jl.player.MP3'
     }
 }
 
 task(runMP3, dependsOn: 'classes', type: JavaExec) {
 	main = 'javazoom.jl.player.MP3'
 	classpath = sourceSets.main.runtimeClasspath
-	args 'resources/Love.mp3'
+	args 'resources/ring.mp3'
 	systemProperty 'simple.message', 'Hello '
 }
 
@@ -72,9 +72,8 @@ task(runMP3, dependsOn: 'classes', type: JavaExec) {
 task makejar(type: Jar) {
     from files(sourceSets.main.output.classesDir)
     from configurations.runtime.asFileTree.files.collect { zipTree(it) }
-    archivesBaseName='FreeMP3'
     manifest {
-        attributes 'Main-Class': 'JLayer', archivesBaseName:'JLayer'
+        attributes 'Main-Class': 'javazoom.jl.player.MP3', archivesBaseName:'FreeMP3'
     }
 }
 

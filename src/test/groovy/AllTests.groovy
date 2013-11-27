@@ -17,7 +17,7 @@
  *----------------------------------------------------------------------
  */
 
-//import javazoom.jl.decoder.BitstreamTest;
+import javazoom.jl.decoder.BitstreamTest;
 import javazoom.jl.player.jlpTest;
 import junit.framework.Test;
 import junit.framework.TestSuite;
