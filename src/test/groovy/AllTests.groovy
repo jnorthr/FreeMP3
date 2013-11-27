@@ -31,7 +31,7 @@ public class AllTests
 	{
 		TestSuite suite = new TestSuite("Test for javazoom.jl.decoder");
 		//$JUnit-BEGIN$
-		//suite.addTest(new TestSuite(BitstreamTest.class));
+		suite.addTest(new TestSuite(BitstreamTest.class));
 		suite.addTest(new TestSuite(jlpTest.class));
 		//$JUnit-END$
 		return suite;
