@@ -76,7 +76,19 @@ task makejar(type: Jar) {
         attributes 'Main-Class': 'javazoom.jl.player.MP3', archivesBaseName:'FreeMP3'
     }
 }
+// ================================
+test {
+    jvmArgs ["-Xmx384M"]
+    //include "**/tests/special/**/*Test.class" // Disables Auto Detection of which tests to run
+    //exclude "**/Old*Test.class"
+    forkEvery = 3
+    maxParallelForks = guessMaxForks()
+}
 
+def guessMaxForks() {
+    int processors =  Runtime.runtime.availableProcessors()
+    return Math.max(2, (int) (processors / 2))
+}
 // ================================
 task wrapper(type: Wrapper) {
     gradleVersion = '1.9'
