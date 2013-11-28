@@ -65,8 +65,8 @@ public class BitstreamTest extends TestCase
 		InputStream pin = getClass().getClassLoader().getResourceAsStream("mp3.properties");
 		props.load(pin);
 		basefile = "resources/";   //(String) props.getProperty("basefile");
-		name = "Love.mp3";  // (String) props.getProperty("filename");		
-		filename = "resources/Love.mp3";	
+		name = "ring.mp3";  // (String) props.getProperty("filename");		
+		filename = "resources/ring.mp3";	
 		try
 		{
 			mp3in = new FileInputStream(filename);
