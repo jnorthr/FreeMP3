@@ -55,16 +55,17 @@ sourceSets {
 } // end of sourceSets
 
 
-jar {
-    manifest {
+jar { 	
+    manifest { 
         attributes 'Implementation-Title': 'FreeMP3', 'Implementation-Version': version, 'Main-Class': 'javazoom.jl.player.MP3'
     }
 }
 
 task(runMP3, dependsOn: 'classes', type: JavaExec) {
 	main = 'javazoom.jl.player.MP3'
-	classpath = sourceSets.main.runtimeClasspath
-	args 'resources/ring.mp3'
+	classpath sourceSets.main.runtimeClasspath 
+	classpath 'resources/sfd.ser'
+	args 'resources/Love.mp3'
 	systemProperty 'simple.message', 'Hello '
 }
 
@@ -76,19 +77,28 @@ task makejar(type: Jar) {
         attributes 'Main-Class': 'javazoom.jl.player.MP3', archivesBaseName:'FreeMP3'
     }
 }
-// ================================
+
+tasks.withType(Compile) {
+  options.fork = true
+  options.forkOptions.with {
+    memoryMaximumSize = "384m" // try different values
+  }
+}
+
 test {
-    jvmArgs ["-Xmx384M"]
+    jvmArgs ["-Xmx256M"]
     //include "**/tests/special/**/*Test.class" // Disables Auto Detection of which tests to run
     //exclude "**/Old*Test.class"
-    forkEvery = 3
+    forkEvery = 30
     maxParallelForks = guessMaxForks()
 }
 
 def guessMaxForks() {
-    int processors =  Runtime.runtime.availableProcessors()
+    int processors =
+    Runtime.runtime.availableProcessors()
     return Math.max(2, (int) (processors / 2))
 }
+
 // ================================
 task wrapper(type: Wrapper) {
     gradleVersion = '1.9'
