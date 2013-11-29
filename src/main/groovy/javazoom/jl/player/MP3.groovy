@@ -138,6 +138,36 @@ public class MP3 {
 
 
 
+    // =========================
+    // song player from songs[] list
+    def playSongs()
+    {
+	this.songs.each{song->
+	        String filename = song;
+        	this.setName(filename);
+
+		def th = Thread.start 
+		{
+			println 'starting to play '+filename+" for "+playtime+" sec.s"
+	        	this.play();
+    			sleep this.playtime * 1000;
+		        // when  done, stop playing it
+        		this.close();
+    			//throw new NullPointerException()
+		} // end of thread start
+
+		th.setDefaultUncaughtExceptionHandler({t,ex ->
+    			println 'ignoring: ' + ex.class.name
+		} as Thread.UncaughtExceptionHandler)
+
+		th.join()
+
+	} // end of each
+
+    } // end of playSong
+
+
+
     // play client
     public static void main(String[] args) {
         MP3 mp3 = new MP3();
@@ -156,28 +186,10 @@ public class MP3 {
 		mp3.songs += "resources/ring.mp3";
 	} // end of if
 
-
-	mp3.songs.each{song->
-	        String filename = song;
-        	mp3.setName(filename);
-
-		def th = Thread.start 
-		{
-			println 'starting to play '+filename+" for "+mp3.playtime+" sec.s"
-	        	mp3.play();
-    			sleep mp3.playtime * 1000;
-    			//throw new NullPointerException()
-		} // end of thread start
-
-		th.setDefaultUncaughtExceptionHandler({t,ex ->
-    			println 'ignoring: ' + ex.class.name
-		} as Thread.UncaughtExceptionHandler)
-
-		th.join()
-
-	        // when  done, stop playing it
-        	mp3.close();
-	} // end of each
+	try{
+		mp3.playSongs()
+	}
+	catch(Exception x) {}
 
     } // end of main
 
