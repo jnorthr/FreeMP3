@@ -29,7 +29,8 @@ public class MP3 {
     private Player player; 
     int playtime = 10; // default to 10 sec.s of play
     boolean gui = false;
-    def songs = []
+    def songs = [];
+    boolean playtimedeclared = false;
 
     // constructor that takes the name of an MP3 file
     public setName(String filename) {
@@ -99,8 +100,8 @@ public class MP3 {
 			{
 				if (at.isInteger())
 				{
-					try{ this.playtime = at as int; } catch(Exception x){ this.playtime = 15; }
-					if ( this.playtime < 1 ) { this.playtime = 15; }
+					try{ this.playtime = at as int;  playtimedeclared=true; } catch(Exception x){ this.playtime = 15; }
+					if ( this.playtime < 1 ) { this.playtime = 15; playtimedeclared=true; }
 				} // end of if
 				else
 				{
@@ -146,13 +147,21 @@ public class MP3 {
 	        String filename = song;
         	this.setName(filename);
 
+		// read MP3 meta data for song length in sec.s to play
+		def rmd = new ReadMetaData(filename);
+		int songlength = rmd.getPlayTime();
+		int secs = (playtimedeclared) ? this.playtime : songlength ;
+		if (secs > songlength ) { songlength = secs; }
+
 		def th = Thread.start 
 		{
-			println 'starting to play '+filename+" for "+playtime+" sec.s"
+
+			println 'starting to play '+filename+" for "+secs+" sec.s"
 	        	this.play();
-    			sleep this.playtime * 1000;
+    			sleep secs * 1000;  // playtime is in seconds so multi by 1000 to get milles used in sleep;
 		        // when  done, stop playing it
         		this.close();
+			println "playtime is over"
     			//throw new NullPointerException()
 		} // end of thread start
 
@@ -195,3 +204,45 @@ public class MP3 {
 
 } // end of class
 
+/* groovy timer and timertask
+// http://mrhaki.blogspot.fr/2009/11/groovy-goodness-run-code-at-specified.html
+import java.util.timer.*  
+  
+class TimerTaskExample extends TimerTask {  
+        public void run() {  
+            println new Date()  
+        }  
+}  
+  
+int delay = 5000   // delay for 5 sec.  
+int period = 1000  // repeat every sec.  
+Timer timer = new Timer()  
+timer.scheduleAtFixedRate(new TimerTaskExample(), delay, period) 
+
+//--------------------
+// or
+// File: newtimer.groovy
+class GroovyTimerTask extends TimerTask {
+    Closure closure
+    void run() {
+        closure()
+    }
+}
+
+class TimerMethods {
+    static TimerTask runEvery(Timer timer, long delay, long period, Closure codeToRun) {
+        TimerTask task = new GroovyTimerTask(closure: codeToRun)
+        timer.schedule task, delay, period
+        task
+    }
+}
+
+use (TimerMethods) {
+    def timer = new Timer()
+    def task = timer.runEvery(1000, 5000) {
+        println "Task executed at ${new Date()}."
+    }
+    println "Current date is ${new Date()}."
+}
+
+*/

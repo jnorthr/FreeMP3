@@ -69,6 +69,12 @@ task(runMP3, dependsOn: 'classes', type: JavaExec) {
 	systemProperty 'simple.message', 'Hello '
 }
 
+task(runRMD, dependsOn: 'classes', type: JavaExec) {
+	main = 'javazoom.jl.player.ReadMetaData'
+	classpath sourceSets.main.runtimeClasspath 
+	args 'resources/Love.mp3'
+}
+
 
 task makejar(type: Jar) {
     from files(sourceSets.main.output.classesDir)
