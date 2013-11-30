@@ -10,18 +10,47 @@ public class ImagesChooser
     // start to choose files from pwd
     def initialPath
     JFileChooser fc
-
+    def path
+    def of = new File("/Volumes/Data/dev/FreeMP3/build/dependency-cache/images.txt")
+    
     public ImagesChooser()
     {
         // start to choose files from pwd
         initialPath = System.getProperty("user.dir");
         fc = new JFileChooser(initialPath);
-
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        //fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        //fc.setFileFilter(new MP3filter());
+        of.write('// List of Image Files\n');
     } // end of constructor
 
+    public getSaveDir()
+    {
+        //fc.setSelectedFile(new File("images.txt"));    
+        int result = fc.showSaveDialog( null );
+        switch ( result )
+        {
+            case JFileChooser.APPROVE_OPTION:
+            File file = fc.getSelectedFile();
+
+            path =  fc.getCurrentDirectory().getAbsolutePath();
+            println "path="+path+"\nfile name="+file.toString();
+            if (file.exists() && (file.isDirectory() )  )
+            {                
+                initialPath = file.toString();
+                initialPath += "/images.txt";
+                println "writing output to path:"+initialPath
+            }
+            break;
+
+           case JFileChooser.CANCEL_OPTION:
+           case JFileChooser.ERROR_OPTION:
+           break;
+        } // end of switch    
+    
+        return initialPath;
+        
+    } // end of getSaveDir
+    
+    
     public String getImages()
     {    
         String name = null;
@@ -31,8 +60,8 @@ public class ImagesChooser
             case JFileChooser.APPROVE_OPTION:
             File file = fc.getSelectedFile();
 
-            def path =  fc.getCurrentDirectory().getAbsolutePath();
-            println "path="+path+"\nfile name="+file.toString();
+            initialPath =  fc.getCurrentDirectory().getAbsolutePath();
+            println "path="+initialPath+"\nfile name="+file.toString();
             if (file.exists() && (file.isDirectory() )  )
             {                
                 name = file.toString();
@@ -52,15 +81,30 @@ public class ImagesChooser
         new File(dir).eachFile{fi ->
             if (fi.isDirectory()) parseImages(fi.toString());
             boolean flag = accept(fi);
-            if (flag) println "image="+fi.toString()
+            if (flag) of.append(fi.toString()+'\n');
         } // end of each
         
     } // end of getImages
 
+    def copy = { File src,File dest->
+        def input = src.newInputStream
+        def output = dest.newOutputStream()
+ 
+        output << input
+ 
+        input.close()
+        output.close()
+    }
 
     // 
     public boolean accept(File f) {
-        return f.isFile() && f.getName().toLowerCase().endsWith(".jpg");
+        boolean flag = f.isFile() 
+        def fn = f.getName().toLowerCase()
+        if (flag)
+        {
+            flag = (fn.endsWith(".gif") || fn.endsWith(".png") || fn.endsWith(".jpg") || fn.endsWith(".jpeg")  ) ? true : false;
+        }
+        return flag;
     }
 
 
@@ -68,9 +112,10 @@ public class ImagesChooser
     {
         println "--- starting ---"
         def sc = new ImagesChooser();
-        def Images = sc.getImages()
-        println "you chose "+Images.toString()
-        sc.parseImages(Images.toString());
+        
+        def imagepath = sc.getImages()
+        println "you picked "+imagepath.toString()
+        sc.parseImages(imagepath.toString());
         
         println "--- ending ---"
     } // end of main
