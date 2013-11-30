@@ -144,6 +144,7 @@ public class ReadMetaData
 	    conf = new ConfigSlurper()
             config = conf.parse(u);
 	    playtime = 	(config.total_ms) ? ( ( new Float(config.total_ms) / 1000F ) as int) + 1 :  10;
+	    println this.filename+" suggested a playtime of "+getPlayTimeMinutes();
         }
         catch (BitstreamException e)
         {
