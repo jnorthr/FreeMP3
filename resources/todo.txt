@@ -1,0 +1,18 @@
+To Do list 3 dec.2013
+
+jim@iMac ~/Desktop> java -jar /Volumes/FHD-XS/FreeMP3/build/libs/FreeMP3-1.0.2.jar "/Volumes/Media1/Music/Music/Seal - Kiss from a Rose.mp3" 21
+
+Dec 3, 2013 9:36:24 PM org.codehaus.groovy.runtime.m12n.SimpleExtensionModule getMetaMethods
+WARNING: Module [groovy-all] - Unable to load extension class [class org.codehaus.groovy.jsr223.ScriptExtensions] due to [javax/script/ScriptEngine]. Maybe this module is not supported by your JVM version.
+
+Dec 3, 2013 9:36:25 PM org.codehaus.groovy.runtime.m12n.SimpleExtensionModule getMetaMethods
+WARNING: Module [groovy-all] - Unable to load extension class [class org.codehaus.groovy.jsr223.ScriptStaticExtensions] due to [javax/script/ScriptEngineManager]. Maybe this module is not supported by your JVM version.
+i=-1 j=27 readMetaData properties:resources/Seal - Kiss from a Rose.mp3.properties from /Volumes/Media1/Music/Music/Seal - Kiss from a Rose.mp3
+
+BitstreamTest(/Volumes/Media1/Music/Music/Seal - Kiss from a Rose.mp3) not found
+
+starting to play /Volumes/Media1/Music/Music/Seal - Kiss from a Rose.mp3 for 21 sec.s
+
+playing /Volumes/Media1/Music/Music/Seal - Kiss from a Rose.mp3
+
+java.io.IOException: unable to load resource 'sfd.ser'
