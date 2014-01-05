@@ -1,4 +1,4 @@
-To Do list 3 dec.2013
+To Do list 5 dec.2013
 
 jim@iMac ~/Desktop> java -jar /Volumes/FHD-XS/FreeMP3/build/libs/FreeMP3-1.0.2.jar "/Volumes/Media1/Music/Music/Seal - Kiss from a Rose.mp3" 21
 
