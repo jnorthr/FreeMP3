@@ -36,7 +36,7 @@ public class ReadMetaData
     def conf   // new ConfigSlurper
     def config // parsed config content
     def ok = false; // set true when valid song was found, and metadata was written
-    def int playtime = 10 // seconds
+    def int playtime = 2 // seconds
 
     public ReadMetaData()
     {
@@ -44,7 +44,7 @@ public class ReadMetaData
 
     public ReadMetaData(String nm)
     {
-	this.setMetaData(nm);
+     	this.setMetaData(nm);
         this.readStream()
     } // end of named constructor
 
@@ -68,25 +68,25 @@ public class ReadMetaData
     // declare name of .mp3 file to discovery
     public setMetaData(String ifn) throws IOException
     {
-	this.filename = ifn;
-	String fn = new File(ifn).canonicalPath;
+       this.filename = ifn;
+	   String fn = new File(ifn).canonicalPath;
 
-	int i = fn.lastIndexOf('\\');
-	int j = fn.lastIndexOf('/');
-	int k = (j<0)?i:j;
-	k = (k<0) ? 0 : k ;
-	this.propertyfilename = "resources"+fn.substring(k)+ ".properties"
-	this.out = new File(propertyfilename);
+       int i = fn.lastIndexOf('\\');
+	   int j = fn.lastIndexOf('/');
+       int k = (j<0)?i:j;
+	   k = (k<0) ? 0 : k ;
+	   this.propertyfilename = "resources"+fn.substring(k)+ ".properties"
+	   this.out = new File(propertyfilename);
 
-	println "i=$i j=$j readMetaData properties:"+this.propertyfilename+" from "+fn
-	//this.out = new File(fn);
+    	println "i=$i j=$j readMetaData properties:"+this.propertyfilename+" from "+fn
+	    //this.out = new File(fn);
 
         try
         {
             mp3in = new FileInputStream(this.filename);
             bin = new Bitstream(mp3in);
-	    this.out.write("filename=\""+fn+"\"\n");
-	    this.ok = true;
+	        this.out.write("filename=\""+fn+"\"\n");
+	        this.ok = true;
         }
         catch (IOException x)
         {
@@ -154,6 +154,10 @@ public class ReadMetaData
         {
             assertTrue("IOException : "+e.getMessage(),false);
         }
+        catch (Exception e)
+        {
+            println("readStream failed - Exception : "+e.getMessage());
+        }
    } // end of method
    
     public static void main(String[] args)
@@ -161,7 +165,7 @@ public class ReadMetaData
         println "--- starting ---"
         def filename = "resources/ring.mp3";    
         def rmd = new ReadMetaData();
-	rmd.setMetaData(filename);
+	    rmd.setMetaData(filename);
         rmd.readStream()
         println "--- got it ---"
 
@@ -179,7 +183,7 @@ public class ReadMetaData
 
 
         println "--- try non-existent file ---"
-        filename = "resources/Lovex.mp3";    
+        filename = "resources/kr.mp3";    
         rmd = new ReadMetaData(filename);
 	println "${filename} song time in sec.s:"+rmd.getPlayTime(); 
         if (rmd.ok) { println "${filename} song time in m/s:"+rmd.config.total_ms; }

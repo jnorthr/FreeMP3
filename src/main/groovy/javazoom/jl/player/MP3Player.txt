@@ -1,0 +1,151 @@
+
+/*************************************************************************
+ *  Compilation:  javac -classpath .:jl1.0.jar MP3.java         (OS X)
+ *                javac -classpath .;jl1.0.jar MP3.java         (Windows)
+ *  Execution:    java -classpath .:jl1.0.jar MP3 filename.mp3  (OS X / Linux)
+ *                java -classpath .;jl1.0.jar MP3 filename.mp3  (Windows)
+ *  
+ *  Plays an MP3 file using the JLayer MP3 library.
+ *
+ *  Reference:  http://www.javazoom.net/javalayer/sources.html
+ *
+ *
+ *  To execute, get the file jl1.0.jar from the website above or from
+ *
+ *      http://www.cs.princeton.edu/introcs/24inout/jl1.0.jar
+ *
+ *  and put it in your working directory with this file MP3.java.
+ *
+ *************************************************************************/
+package javazoom.jl.player;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+
+import javazoom.jl.player.Player;
+
+public class MP3Player {
+    private String filename;
+    private Player player; 
+
+    int playtime = 40; // default to 10 sec.s of play
+
+    // =========================
+    // sound player 
+    def playSound(String song)
+    {
+	        String filename = song;
+            def rmd;
+
+    		// read MP3 meta data for song length in sec.s to play
+            try{
+                rmd = new ReadMetaData(filename);
+                int songlength = rmd.getPlayTime();
+                println "will play $filename for "+songlength+" sec.s"
+            }
+
+            catch(Exception x) 
+            {
+                println "could not read metadata for ${filename} due to :"+x.message
+            } // end of catch
+
+		    def secs = 0.7;  //songlength;
+
+            try {
+                FileInputStream fis     = new FileInputStream(filename);
+                BufferedInputStream bis = new BufferedInputStream(fis);
+                player = new Player(bis);
+                println "gonna play $filename for $secs sec.s"
+            }
+            catch (Exception e) 
+            {
+                System.out.println("Problem playing file " + filename);
+                System.out.println(e);
+            } // end of catch
+
+    		def th = Thread.start 
+        	{
+    			println 'starting to play '+filename+" for "+secs+" sec.s"
+	        	player.play();
+    			sleep secs * 1000;  // playtime is in seconds so multi by 1000 to get milles used in sleep;
+		        // when  done, stop playing it
+        		player.close();
+                println "playtime is over"
+    			//throw new NullPointerException()
+		    } // end of thread start
+
+    		th.setDefaultUncaughtExceptionHandler({t,ex ->
+    			println 'ignoring: ' + ex.class.name
+            } as Thread.UncaughtExceptionHandler)
+
+    		th.join()
+    } // end of playSong
+
+    // play client
+    public static void main(String[] args) {
+
+        MP3Player mp3 = new MP3Player();
+        println "MP3Player trying to play song=[${ args[0] }];"
+    	
+    	if (args.size() > 0)
+	    {
+            def ok = new File(args[0]).exists();
+
+            println "trying to play song=[${ args[0] }] exists ?="+ok
+            try
+            {
+                if (ok) { mp3.playSound(args[0]) };
+            }
+
+            catch(Exception x) 
+            {
+                println "could not play ${ args[0] } due to :"+x.message
+            } // end of catch
+    	} // end of if
+    } // end of main
+
+} // end of class
+
+
+
+/* groovy timer and timertask
+// http://mrhaki.blogspot.fr/2009/11/groovy-goodness-run-code-at-specified.html
+import java.util.timer.*  
+  
+class TimerTaskExample extends TimerTask {  
+        public void run() {  
+            println new Date()  
+        }  
+}  
+  
+int delay = 5000   // delay for 5 sec.  
+int period = 1000  // repeat every sec.  
+Timer timer = new Timer()  
+timer.scheduleAtFixedRate(new TimerTaskExample(), delay, period) 
+
+//--------------------
+// or
+// File: newtimer.groovy
+class GroovyTimerTask extends TimerTask {
+    Closure closure
+    void run() {
+        closure()
+    }
+}
+
+class TimerMethods {
+    static TimerTask runEvery(Timer timer, long delay, long period, Closure codeToRun) {
+        TimerTask task = new GroovyTimerTask(closure: codeToRun)
+        timer.schedule task, delay, period
+        task
+    }
+}
+
+use (TimerMethods) {
+    def timer = new Timer()
+    def task = timer.runEvery(1000, 5000) {
+        println "Task executed at ${new Date()}."
+    }
+    println "Current date is ${new Date()}."
+}
+
+*/

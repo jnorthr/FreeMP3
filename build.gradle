@@ -9,7 +9,9 @@ mainClassName = "javazoom.jl.player.MP3"
 sourceCompatibility = 1.5
 version = '1.0.2'
 description = 'FreeMP3 (JLayer Open Source) MP3 Player for Java/Groovy'
-defaultTasks 'clean','build', 'javadoc', 'installApp', 'makejar', 'distZip', 'distTar', 'runMP3'
+
+defaultTasks 'clean','build', 'javadoc', 'installApp', 'makejar', 'distZip', 'distTar', 'runMP3Player', 'runMP3'
+
 ext{
     archivesBaseName='FreeMP3'
 }
@@ -25,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.2.0'
+    compile 'org.codehaus.groovy:groovy-all:2.4.0'
     compile 'org.apache.ivy:ivy:2.3.0'
     testCompile fileTree(dir: 'lib',  includes: ['*.jar']) 
     testRuntime fileTree(dir: 'lib',  includes: ['*.jar']) 
@@ -61,6 +63,16 @@ jar {
     }
 }
 
+
+task(runMP3Player, dependsOn: 'classes', type: JavaExec) {
+  main = 'javazoom.jl.player.MP3Player'
+  classpath sourceSets.main.runtimeClasspath 
+  classpath 'resources/sfd.ser'
+  args 'sounds/F71.mp3'
+  systemProperty 'simple.message', 'Playing sounds/F71.mp3'
+}
+
+
 task(runMP3, dependsOn: 'classes', type: JavaExec) {
 	main = 'javazoom.jl.player.MP3'
 	classpath sourceSets.main.runtimeClasspath 
@@ -72,7 +84,7 @@ task(runMP3, dependsOn: 'classes', type: JavaExec) {
 task(runRMD, dependsOn: 'classes', type: JavaExec) {
 	main = 'javazoom.jl.player.ReadMetaData'
 	classpath sourceSets.main.runtimeClasspath 
-	args 'resources/Love.mp3'
+	args 'sounds/F71.mp3'
 }
 
 
@@ -84,7 +96,7 @@ task makejar(type: Jar) {
     }
 }
 
-tasks.withType(Compile) {
+tasks.withType(JavaCompile) {
   options.fork = true
   options.forkOptions.with {
     memoryMaximumSize = "384m" // try different values
@@ -107,5 +119,5 @@ def guessMaxForks() {
 
 // ================================
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.9'
+    gradleVersion = '2.3'
 }
