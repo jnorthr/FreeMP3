@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Freemp3 by jnorthr</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Freemp3</h1>
+        <p>A Clone of JLayer MP3 Decoder w/Mods to use on JDK1.5+</p>
+        <p class="view"><a href="https://github.com/jnorthr/FreeMP3">View the Project on GitHub <small>jnorthr/FreeMP3</small></a></p>
+        <ul>
+          <li><a href="https://github.com/jnorthr/FreeMP3/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/jnorthr/FreeMP3/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/jnorthr/FreeMP3">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="freemp3" class="anchor" href="#freemp3" aria-hidden="true"><span class="octicon octicon-link"></span></a>FreeMP3</h1>
+
+<p>Travis Build Status for Master Branch: <a href="https://travis-ci.org/jnorthr/FreeMP3"><img src="https://travis-ci.org/jnorthr/FreeMP3.svg?branch=master" alt="Build Status"></a></p>
+
+<p>A Clone of JLayer MP3 Decoder w/Mods to use on JDK1.5+ JVM systems. This version of JLayer includes a revised file directory structure that is compatible with the gradle build tool. Additional modifications by FairChild Computing Ltd, U.K. (jnorthr)</p>
+
+<p>JLayer 1.0.2
+ JavaZOOM 1999-2008</p>
+
+<p>Project Homepage :
+   <a href="http://www.javazoom.net/javalayer/javalayer.html">http://www.javazoom.net/javalayer/javalayer.html</a> </p>
+
+<p>JAVA and MP3 online Forums :</p>
+
+<h2>
+<a id="---httpwwwjavazoomnetservicesforumsindexjsp" class="anchor" href="#---httpwwwjavazoomnetservicesforumsindexjsp" aria-hidden="true"><span class="octicon octicon-link"></span></a>   <a href="http://www.javazoom.net/services/forums/index.jsp">http://www.javazoom.net/services/forums/index.jsp</a>
+</h2>
+
+<h2>
+<a id="description-" class="anchor" href="#description-" aria-hidden="true"><span class="octicon octicon-link"></span></a>DESCRIPTION :</h2>
+
+<p>JLayer is a library that decodes/plays/converts MPEG 1/2/2.5 Layer 1/2/3
+(i.e. MP3) in real time for the JAVA(tm) platform. This is a non-commercial project 
+and anyone can add his contribution. JLayer is licensed under LGPL (see LICENSE.txt).</p>
+
+<h2>
+<a id="faq--" class="anchor" href="#faq--" aria-hidden="true"><span class="octicon octicon-link"></span></a>FAQ : </h2>
+
+<ul>
+<li><p>How to install JLayer ?
+Before running JLayer you must set PATH and CLASSPATH for JAVA
+and you must add jl1.0.1.jar to the CLASSPATH.</p></li>
+<li><p>Do I need JMF to run JLayer player ?
+No, JMF is not required. You just need a JVM JavaSound 1.0 compliant.
+(i.e. JVM1.3 or higher).</p></li>
+<li><p>How to run the MP3TOWAV converter ?
+java javazoom.jl.converter.jlc -v -p output.wav yourfile.mp3
+(Note : MP3TOWAV converter should work under jdk1.1.x or higher)</p></li>
+<li><p>How to run the simple MP3 player ?
+java javazoom.jl.player.jlp localfile.mp3
+or
+java javazoom.jl.player.jlp -url <a href="http://www.aserver.com/remotefile.mp3">http://www.aserver.com/remotefile.mp3</a>
+Note : MP3 simple player only works under JVM that supports JavaSound 1.0 (i.e JDK1.3.x+)</p></li>
+<li><p>How to run the advanced (threaded) MP3 player ?
+java javazoom.jl.player.advanced.jlap localfile.mp3</p></li>
+<li><p>Does simple MP3 player support streaming ?
+Yes, use the following command to play music from stream :
+java javazoom.jl.player.jlp -url <a href="http://www.shoutcastserver.com:8000">http://www.shoutcastserver.com:8000</a>
+(If JLayer returns without playing SHOUTcast stream then it might mean 
+that the server expect a winamp like "User-Agent" in HTTP request).</p></li>
+<li><p>Does JLayer support MPEG 2.5 ?
+Yes, it works fine for all files generated with LAME.</p></li>
+<li><p>Does JLayer support VBR ?
+Yes, It supports VBRI and XING VBR header too. </p></li>
+<li><p>How to get ID3v1 or ID3v2 tags from JLayer API ?
+The API provides a getRawID3v2() method to get an InputStream on ID3v2 frames.</p></li>
+<li><p>How to skip frames to have a seek feature ?
+See javazoom.jl.player.advanced.jlap source to learn how to skip frames.</p></li>
+<li>
+<p>How much memory/CPU JLayer needs to run ?
+Here are our benchmark notes :</p>
+
+<ul>
+<li>Heap use range : 1380KB to 1900KB - 370 classes loaded. </li>
+<li>Footprint : ~8MB under WinNT4/Win2K + J2SE 1.3 (Hotspot).
+            ~10MB under WinNT4/Win2K + J2SE 1.4.1 (Hotspot).</li>
+<li>CPU usage : ~12% under PIII 800Mhz/WinNT4+J2SE 1.3 (Hotspot).
+            ~8% under PIII 1Ghz/Win2K+J2SE 1.3.1 (Hotspot).
+            ~12% under PIII 1Ghz/Win2K+J2SE 1.4.1 (Hotspot).
+            ~1% under PIII 1Ghz/Win2K+J2SE 1.5.0 (Hotspot).</li>
+</ul>
+</li>
+<li><p>How to contact JLayer developers ?
+Try to post a thread on Java&amp;MP3 online forums at :
+<a href="http://www.javazoom.net/index.shtml">http://www.javazoom.net/index.shtml</a>
+You can also contact us at <a href="mailto:jlayer@javazoom.net">jlayer@javazoom.net</a> for contributions.</p></li>
+</ul>
+
+<h2>
+<a id="known-problems-" class="anchor" href="#known-problems-" aria-hidden="true"><span class="octicon octicon-link"></span></a>KNOWN PROBLEMS :</h2>
+
+<p>99% of MP3 plays well with JLayer but some (1%) return an ArrayIndexOutOfBoundsException 
+while playing. It might come from invalid audio frames. 
+Workaround : Just try/catch ArrayIndexOutOfBoundsException in your code to skip non-detected invalid frames.</p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/jnorthr">jnorthr</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
