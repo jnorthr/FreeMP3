@@ -2,7 +2,7 @@ FreeMP3
 =======
 Travis Build Status for Master Branch: [![Build Status](https://travis-ci.org/jnorthr/FreeMP3.svg?branch=master)](https://travis-ci.org/jnorthr/FreeMP3)
 
-UChen Users see bototm of this post
+UChen Users see bottom of this post
 ------------
 
 A Clone of JLayer MP3 Decoder w/Mods to use on JDK1.5+ JVM systems. This version of JLayer includes a revised file directory structure that is compatible with the gradle build tool. Additional modifications by FairChild Computing Ltd, U.K. (jnorthr)
