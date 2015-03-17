@@ -94,15 +94,15 @@ UChen Links
 Leanne's Repos
 ------------
 
-[Classical Tibetan](https://github.com/leannenorthrop/classical-tibetan)
-[UChen Map](https://github.com/leannenorthrop/markdown-js/blob/wylie/src/dialects/wylie/wmd2uchen.js)
-[Markdown Tibetan Editor](http://leannenorthrop.github.io/classical-tibetan/editor/?layout=contrib#)
-[Sample Page of Tibetan](http://leannenorthrop.github.io/classical-tibetan/)
-[Bohoomil Fonts](http://bohoomil.com/doc/05-fonts/)
-[Jomolhari Fonts](https://sites.google.com/site/chrisfynn2/home/fonts/jomolhari)
-[Groovy Fonts Overview](http://groovy.codehaus.org/jsr/spec/AltChapter03LexicalStructure.html)
-[Unicode Overview of UChen Syntax - see page 499-501](http://www.unicode.org/versions/Unicode7.0.0/ch13.pdf)
-[Unicode PDF] - see page 2 and 3](http://unicode.org/charts/PDF/U0F00.pdf)
+ * [Classical Tibetan](https://github.com/leannenorthrop/classical-tibetan)
+ * [UChen Map](https://github.com/leannenorthrop/markdown-js/blob/wylie/src/dialects/wylie/wmd2uchen.js)
+ * [Markdown Tibetan Editor](http://leannenorthrop.github.io/classical-tibetan/editor/?layout=contrib#)
+ * [Sample Page of Tibetan](http://leannenorthrop.github.io/classical-tibetan/)
+ * [Bohoomil Fonts](http://bohoomil.com/doc/05-fonts/)
+ * [Jomolhari Fonts](https://sites.google.com/site/chrisfynn2/home/fonts/jomolhari)
+ * [Groovy Fonts Overview](http://groovy.codehaus.org/jsr/spec/AltChapter03LexicalStructure.html)
+ * [Unicode Overview of UChen Syntax - see page 499-501](http://www.unicode.org/versions/Unicode7.0.0/ch13.pdf)
+ * [Unicode PDF] - see page 2 and 3](http://unicode.org/charts/PDF/U0F00.pdf)
 
 UChen Logic
 ------------
