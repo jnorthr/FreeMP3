@@ -130,28 +130,19 @@ Anna
 --------
 
 <P>
-
-<script language="JavaScript" src="http://www.explainthatstuff.com/audio/audio-player.js"></script>
-
-<object type="application/x-shockwave-flash" data="http://www.explainthatstuff.com/audio/player.swf" id="audioplayer3" height="24" width="290">
-
-<param name="movie" value="http://www.explainthatstuff.com/audio/player.swf">
-
-<param name="FlashVars" value="playerID=3&amp;bg=0xBCB19B&amp;leftbg=0xFF0000&amp;lefticon=0x111111&amp;rightbg=0xFF0000&amp;rightbghover=0xDCDBDC&amp;righticon=0x111111&amp;righticonhover=0xCC4321&amp;text=0x666666&amp;slider=0x666666&amp;track=0xFFFFFF&amp;border=0x666666&amp;loader=0x9FFFB8&amp;soundFile=http://www.explainthatstuff.com/audio/iloveanna.mp3">
-
-<param name="quality" value="high">
-
-<param name="menu" value="false">
-
-<param name="wmode" value="transparent">
-
-</object> 
-
+ <script language="JavaScript" src="http://www.explainthatstuff.com/audio/audio-player.js"></script>
+ <object type="application/x-shockwave-flash" data="http://www.explainthatstuff.com/audio/player.swf" id="audioplayer3" height="24" width="290">
+ <param name="movie" value="http://www.explainthatstuff.com/audio/player.swf">
+ <param name="FlashVars" value="playerID=3&amp;bg=0xBCB19B&amp;leftbg=0xFF0000&amp;lefticon=0x111111&amp;rightbg=0xFF0000&amp;rightbghover=0xDCDBDC&amp;righticon=0x111111&amp;righticonhover=0xCC4321&amp;text=0x666666&amp;slider=0x666666&amp;track=0xFFFFFF&amp;border=0x666666&amp;loader=0x9FFFB8&amp;soundFile=http://www.explainthatstuff.com/audio/iloveanna.mp3">
+ <param name="quality" value="high">
+ <param name="menu" value="false">
+ <param name="wmode" value="transparent">
+ </object> 
 </P>
 
 and it's called Anna. See http://www.explainthatstuff.com/how-speech-synthesis-works.html[Explain That Stuff] for more info.
 
-In the 1980's, Texas Instruments developed a tool to let children learn to spell english words by speaking to the child. This tool was the *Speak-and-Spell* and you can http://www.speaknspell.co.uk/speaknspell.html[try it out yourself here.]
+In the 1980's, Texas Instruments developed a tool to let children learn to spell english words by speaking to the child. This tool was the *Speak-and-Spell* and you can [try it out yourself here.](http://www.speaknspell.co.uk/speaknspell.html).
 
 ''' 
 
