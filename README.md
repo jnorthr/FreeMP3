@@ -2,6 +2,9 @@ FreeMP3
 =======
 Travis Build Status for Master Branch: [![Build Status](https://travis-ci.org/jnorthr/FreeMP3.svg?branch=master)](https://travis-ci.org/jnorthr/FreeMP3)
 
+UChen Users see bottom of this post
+------------
+
 A Clone of JLayer MP3 Decoder w/Mods to use on JDK1.5+ JVM systems. This version of JLayer includes a revised file directory structure that is compatible with the gradle build tool. Additional modifications by FairChild Computing Ltd, U.K. (jnorthr)
 
  JLayer 1.0.2
@@ -84,3 +87,63 @@ KNOWN PROBLEMS :
 99% of MP3 plays well with JLayer but some (1%) return an ArrayIndexOutOfBoundsException 
 while playing. It might come from invalid audio frames. 
 Workaround : Just try/catch ArrayIndexOutOfBoundsException in your code to skip non-detected invalid frames.
+
+UChen Links 
+========
+
+Leanne's Repos
+------------
+
+ * [Classical Tibetan](https://github.com/leannenorthrop/classical-tibetan)
+ * [UChen Map](https://github.com/leannenorthrop/markdown-js/blob/wylie/src/dialects/wylie/wmd2uchen.js)
+ * [Markdown Tibetan Editor](http://leannenorthrop.github.io/classical-tibetan/editor/?layout=contrib#)
+ * [Sample Page of Tibetan](http://leannenorthrop.github.io/classical-tibetan/)
+ * [Bohoomil Fonts](http://bohoomil.com/doc/05-fonts/)
+ * [Jomolhari Fonts](https://sites.google.com/site/chrisfynn2/home/fonts/jomolhari)
+ * [Groovy Fonts Overview](http://groovy.codehaus.org/jsr/spec/AltChapter03LexicalStructure.html)
+ * [Unicode Overview of UChen Syntax - see page 499-501](http://www.unicode.org/versions/Unicode7.0.0/ch13.pdf)
+ * [Unicode PDF - see page 2 and 3](http://unicode.org/charts/PDF/U0F00.pdf)
+
+UChen Logic
+------------
+
+Have done an addition to the FreeMP3 suite. This logic allows the pronunciation of UChen (or any) sound fragments. The new groovy module named MP3Player has been included to play these sound fragments. A simple code sample to use this feature would look like this:
+
+Play A Sound
+--------------
+ MP3Player mp3 = new MP3Player();
+ 
+ mp3.playSound('sounds/F5E.mp3') 
+ 
+ mp3.play('F53')  // actually translated to look for a sound fragment as 'sounds/F53.mp3' 
+
+To use this MP3Player, we need an .mp3 file. These can be created on Apple Mac OSX systems using the QuickTime Player to record audio thru the Mac microphone. Then save it as a .m4a audio (not movie) file. This must be changed into a .mp3 file using a free tool here http://www.nch.com.au/switch/index.html?gclid=CKbEtY6Ex7QCFW3KtAod-TYAlQ[called Switch]. That tool reads a .m4a file and writes a .mp3 equivalent. 
+
+See 'resources/fontmap.uchen' for a map of UChen sylables to unicode characters. The Unicode character like, for example, *UChenMap["ch"] = "\u0F46";* would need a sound file named 'sounds/F46.mp3' so convert the sound fragment and name it according to the unicode character it represents.
+
+Apple Mac OSX and Sound Synthesis
+-------------------
+
+There are tools on the Apple to allow disabled users better access. One of these tools if [VoiceOver for OSX](http://www.apple.com/accessibility/osx/voiceover/). It offers a nice demo of text-to-speech features. Tools like this can be accessed from the javax.accessibility package with Apple's version of Java. You can hear one such sample here: 
+
+Anna
+--------
+
+<P>
+ <script language="JavaScript" src="http://www.explainthatstuff.com/audio/audio-player.js"></script>
+ <object type="application/x-shockwave-flash" data="http://www.explainthatstuff.com/audio/player.swf" id="audioplayer3" height="24" width="290">
+ <param name="movie" value="http://www.explainthatstuff.com/audio/player.swf">
+ <param name="FlashVars" value="playerID=3&amp;bg=0xBCB19B&amp;leftbg=0xFF0000&amp;lefticon=0x111111&amp;rightbg=0xFF0000&amp;rightbghover=0xDCDBDC&amp;righticon=0x111111&amp;righticonhover=0xCC4321&amp;text=0x666666&amp;slider=0x666666&amp;track=0xFFFFFF&amp;border=0x666666&amp;loader=0x9FFFB8&amp;soundFile=http://www.explainthatstuff.com/audio/iloveanna.mp3">
+ <param name="quality" value="high">
+ <param name="menu" value="false">
+ <param name="wmode" value="transparent">
+ </object> 
+</P>
+
+and it's called Anna. See [Explain That Stuff](http://www.explainthatstuff.com/how-speech-synthesis-works.html) for more info.
+
+In the 1980's, Texas Instruments developed a tool to let children learn to spell english words by speaking to the child. This tool was the *Speak-and-Spell* and you can [try it out yourself here.](http://www.speaknspell.co.uk/speaknspell.html).
+
+''' 
+
+
