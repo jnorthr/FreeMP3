@@ -124,7 +124,7 @@ See 'resources/fontmap.uchen' for a map of UChen sylables to unicode characters.
 Apple Mac OSX and Sound Synthesis
 -------------------
 
-There are tools on the Apple to allow disabled users better access. One of these tools if http://www.apple.com/accessibility/osx/voiceover/[VoiceOver for OSX]. It offers a nice demo of text-to-speech features. Tools like this can be accessed from the javax.accessibility package with Apple's version of Java. You can hear one such sample here: 
+There are tools on the Apple to allow disabled users better access. One of these tools if [VoiceOver for OSX](http://www.apple.com/accessibility/osx/voiceover/). It offers a nice demo of text-to-speech features. Tools like this can be accessed from the javax.accessibility package with Apple's version of Java. You can hear one such sample here: 
 
 Anna
 --------
@@ -140,7 +140,7 @@ Anna
  </object> 
 </P>
 
-and it's called Anna. See http://www.explainthatstuff.com/how-speech-synthesis-works.html[Explain That Stuff] for more info.
+and it's called Anna. See [Explain That Stuff](http://www.explainthatstuff.com/how-speech-synthesis-works.html) for more info.
 
 In the 1980's, Texas Instruments developed a tool to let children learn to spell english words by speaking to the child. This tool was the *Speak-and-Spell* and you can [try it out yourself here.](http://www.speaknspell.co.uk/speaknspell.html).
 
