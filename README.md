@@ -95,14 +95,14 @@ Leanne's Repos
 ------------
 
 [Classical Tibetan](https://github.com/leannenorthrop/classical-tibetan)
- * https://github.com/leannenorthrop/markdown-js/blob/wylie/src/dialects/wylie/wmd2uchen.js[UChen Map]
- * http://leannenorthrop.github.io/classical-tibetan/editor/?layout=contrib#[Markdowb Tibetan Editor]
- * http://leannenorthrop.github.io/classical-tibetan/[Sample Page ]of Tibetan
- * http://bohoomil.com/doc/05-fonts/[Bohoomil Fonts]
- * https://sites.google.com/site/chrisfynn2/home/fonts/jomolhari[Jomolhari Fonts]
- * http://groovy.codehaus.org/jsr/spec/AltChapter03LexicalStructure.html[Groovy Fonts] Overview
- * http://www.unicode.org/versions/Unicode7.0.0/ch13.pdf[Unicode Overview of UChen Syntax] - see page 499-501
- * http://unicode.org/charts/PDF/U0F00.pdf[Unicode PDF] - see page 2 and 3
+[UChen Map](https://github.com/leannenorthrop/markdown-js/blob/wylie/src/dialects/wylie/wmd2uchen.js)
+[Markdown Tibetan Editor](http://leannenorthrop.github.io/classical-tibetan/editor/?layout=contrib#)
+[Sample Page of Tibetan](http://leannenorthrop.github.io/classical-tibetan/)
+[Bohoomil Fonts](http://bohoomil.com/doc/05-fonts/)
+[Jomolhari Fonts](https://sites.google.com/site/chrisfynn2/home/fonts/jomolhari)
+[Groovy Fonts Overview](http://groovy.codehaus.org/jsr/spec/AltChapter03LexicalStructure.html)
+[Unicode Overview of UChen Syntax - see page 499-501](http://www.unicode.org/versions/Unicode7.0.0/ch13.pdf)
+[Unicode PDF] - see page 2 and 3](http://unicode.org/charts/PDF/U0F00.pdf)
 
 UChen Logic
 ------------
@@ -112,17 +112,23 @@ Have done an addition to the FreeMP3 suite. This logic allows the pronunciation 
 Play A Sound
 --------------
  MP3Player mp3 = new MP3Player();
+ 
  mp3.playSound('sounds/F5E.mp3') 
+ 
  mp3.play('F53')  // actually translated to look for a sound fragment as 'sounds/F53.mp3' 
 
 To use this MP3Player, we need an .mp3 file. These can be created on Apple Mac OSX systems using the QuickTime Player to record audio thru the Mac microphone. Then save it as a .m4a audio (not movie) file. This must be changed into a .mp3 file using a free tool here http://www.nch.com.au/switch/index.html?gclid=CKbEtY6Ex7QCFW3KtAod-TYAlQ[called Switch]. That tool reads a .m4a file and writes a .mp3 equivalent. 
 
-See *'resources/fontmap.uchen'* for a map of UChen sylables to unicode characters. The Unicode character like, for example, *UChenMap["ch"] = "\u0F46";* would need a sound file named 'sounds/F46.mp3' so convert the sound fragment and name it according to the unicode character it represents.
+See 'resources/fontmap.uchen' for a map of UChen sylables to unicode characters. The Unicode character like, for example, *UChenMap["ch"] = "\u0F46";* would need a sound file named 'sounds/F46.mp3' so convert the sound fragment and name it according to the unicode character it represents.
 
-== Apple Mac OSX and Sound Synthesis
+Apple Mac OSX and Sound Synthesis
+-------------------
 
 There are tools on the Apple to allow disabled users better access. One of these tools if http://www.apple.com/accessibility/osx/voiceover/[VoiceOver for OSX]. It offers a nice demo of text-to-speech features. Tools like this can be accessed from the javax.accessibility package with Apple's version of Java. You can hear one such sample here: +++
-<h3>Anna</h3>
+
+Anna
+--------
+
 <P>
 <script language="JavaScript" src="http://www.explainthatstuff.com/audio/audio-player.js"></script><object type="application/x-shockwave-flash" data="http://www.explainthatstuff.com/audio/player.swf" id="audioplayer3" height="24" width="290">
 <param name="movie" value="http://www.explainthatstuff.com/audio/player.swf">
