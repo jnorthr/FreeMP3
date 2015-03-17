@@ -102,7 +102,7 @@ Leanne's Repos
  * [Jomolhari Fonts](https://sites.google.com/site/chrisfynn2/home/fonts/jomolhari)
  * [Groovy Fonts Overview](http://groovy.codehaus.org/jsr/spec/AltChapter03LexicalStructure.html)
  * [Unicode Overview of UChen Syntax - see page 499-501](http://www.unicode.org/versions/Unicode7.0.0/ch13.pdf)
- * [Unicode PDF] - see page 2 and 3](http://unicode.org/charts/PDF/U0F00.pdf)
+ * [Unicode PDF - see page 2 and 3](http://unicode.org/charts/PDF/U0F00.pdf)
 
 UChen Logic
 ------------
