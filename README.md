@@ -88,12 +88,13 @@ KNOWN PROBLEMS :
 while playing. It might come from invalid audio frames. 
 Workaround : Just try/catch ArrayIndexOutOfBoundsException in your code to skip non-detected invalid frames.
 
---------
-= UChen Links 
+UChen Links 
+========
 
-== Leanne's Repos
+Leanne's Repos
+------------
 
- * https://github.com/leannenorthrop/classical-tibetan[Classical Tibetan]
+[Classical Tibetan](https://github.com/leannenorthrop/classical-tibetan)
  * https://github.com/leannenorthrop/markdown-js/blob/wylie/src/dialects/wylie/wmd2uchen.js[UChen Map]
  * http://leannenorthrop.github.io/classical-tibetan/editor/?layout=contrib#[Markdowb Tibetan Editor]
  * http://leannenorthrop.github.io/classical-tibetan/[Sample Page ]of Tibetan
@@ -103,17 +104,16 @@ Workaround : Just try/catch ArrayIndexOutOfBoundsException in your code to skip 
  * http://www.unicode.org/versions/Unicode7.0.0/ch13.pdf[Unicode Overview of UChen Syntax] - see page 499-501
  * http://unicode.org/charts/PDF/U0F00.pdf[Unicode PDF] - see page 2 and 3
 
-== UChen Logic
+UChen Logic
+------------
 
 Have done an addition to the FreeMP3 suite. This logic allows the pronunciation of UChen (or any) sound fragments. The new groovy module named MP3Player has been included to play these sound fragments. A simple code sample to use this feature would look like this:
 
-.Play A Sound
-[source,groovy]
-----
-MP3Player mp3 = new MP3Player();
-mp3.playSound('sounds/F5E.mp3') 
-mp3.play('F53')  // actually translated to look for a sound fragment as 'sounds/F53.mp3' 
-----
+Play A Sound
+--------------
+ MP3Player mp3 = new MP3Player();
+ mp3.playSound('sounds/F5E.mp3') 
+ mp3.play('F53')  // actually translated to look for a sound fragment as 'sounds/F53.mp3' 
 
 To use this MP3Player, we need an .mp3 file. These can be created on Apple Mac OSX systems using the QuickTime Player to record audio thru the Mac microphone. Then save it as a .m4a audio (not movie) file. This must be changed into a .mp3 file using a free tool here http://www.nch.com.au/switch/index.html?gclid=CKbEtY6Ex7QCFW3KtAod-TYAlQ[called Switch]. That tool reads a .m4a file and writes a .mp3 equivalent. 
 
